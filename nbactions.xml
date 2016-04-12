@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-bintray-upload</actionName>
+            <displayName>bintray-upload</displayName>
+            <goals>
+                <goal>deploy:deploy</goal>
+            </goals>
+        </action>
+    </actions>
