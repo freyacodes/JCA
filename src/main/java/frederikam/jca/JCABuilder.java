@@ -13,16 +13,19 @@ public class JCABuilder {
     private String key;
     private String nick;
 
-    public void setUser(String user) {
+    public JCABuilder setUser(String user) {
         this.user = user;
+        return this;
     }
 
-    public void setKey(String key) {
+    public JCABuilder setKey(String key) {
         this.key = key;
+        return this;
     }
 
-    public void setNick(String nick) {
+    public JCABuilder setNick(String nick) {
         this.nick = nick;
+        return this;
     }
 
     public JCA buildBlocking() {

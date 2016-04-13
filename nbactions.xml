@@ -4,7 +4,7 @@
             <actionName>CUSTOM-bintray-upload</actionName>
             <displayName>bintray-upload</displayName>
             <goals>
-                <goal>deploy:deploy</goal>
+                <goal>deploy</goal>
             </goals>
         </action>
     </actions>
