@@ -1,8 +1,10 @@
 package frederikam.jca;
 
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequestWithBody;
+import com.mashape.unirest.request.body.RequestBodyEntity;
 import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,13 +32,16 @@ public class JCABuilder {
 
     public JCA buildBlocking() {
         try {
-            HttpRequestWithBody post = Unirest.post("https://cleverbot.io/1.0/create")
-                    .header("user", user)
-                    .header("key", key);
-
+            JSONObject jsonOut = new JSONObject()
+                    .put("user", user)
+                    .put("key", key);
+            
             if (nick != null) {
-                post.header("nick", nick);
+                jsonOut.put("nick", nick);
             }
+            //System.out.println(jsonOut.toString());
+            RequestBodyEntity post = Unirest.post("https://cleverbot.io/1.0/create").header("Content-Type", "application/json").body(jsonOut.toString());
+            
             JSONObject json = post.asJson().getBody().getObject();
             String status = json.getString("status");
             

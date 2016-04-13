@@ -9,7 +9,7 @@
         <dependency>
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
-            <version>1.4.9</version>
+            <version>1.4.7</version>
         </dependency>
     </dependencies>
     <properties>
@@ -21,7 +21,7 @@
         <repository>
             <id>bintray-frederikam-JCA</id>
             <name>Frederikam-JCA</name>
-            <url>https://api.bintray.com/maven/frederikam/JCA/JCA-Development/;publish=1</url>
+            <url>https://api.bintray.com/maven/frederikam/JCA/JCA/;publish=1</url>
         </repository>
     </distributionManagement>
 </project>
