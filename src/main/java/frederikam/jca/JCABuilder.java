@@ -1,12 +1,10 @@
 package frederikam.jca;
 
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.request.HttpRequest;
 import com.mashape.unirest.request.HttpRequestWithBody;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JCABuilder {
@@ -38,10 +36,17 @@ public class JCABuilder {
             }
             JSONObject json = post.asJson().getBody().getObject();
             String status = json.getString("status");
-        } catch (Exception ex) {
+            
+            if(!"success".equals(status)){
+                throw new IOException("Cleverbot responded with unexpected status: "+status);
+            }
+            
+            nick = json.getString("nick");
+            JCA jca = new JCA(user, key, nick);
+            return jca;
+        } catch (UnirestException | JSONException | IOException ex) {
             throw new RuntimeException(ex);
         }
-        return null;
     }
 
 }
